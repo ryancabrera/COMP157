@@ -20,6 +20,10 @@ def main():
             print(x)
 
     print(sieve(7))
+    print(list(rosetta_sieve(7)))
+
+    templist = [1, 2, 3]
+
 
 
 def middle_school(m, n):
@@ -62,6 +66,15 @@ def sieve(n):
     l = list(l)
 
     return l
+
+
+#This snippet was taken from rosteta code
+def rosetta_sieve(n):
+    multiples = set()
+    for i in range(2, n+1):
+        if i not in multiples:
+            yield i
+            multiples.update(range(i*i, n+1, i))
 
 
 if __author__:
