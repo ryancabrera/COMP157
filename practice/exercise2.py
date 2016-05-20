@@ -2,18 +2,21 @@ __author__ = 'Ryan Cabrera'
 
 
 def main():
-    print(q(4))
+    n = 4
+    ps = [None] * n
+    print(q(n, ps))
 
 
-def q(n):
+def q(n, ps):
+    p = n - 1
     if n == 1:
-        print(1)
+        ps[p] = "(1)"
+        print(ps)
         return 1
     else:
-        p = n-1
-        ps = "q(", p, ") + 2 *", p, "- 1"
+        ps[p] = "q(" + str(p) + ") + 2 * " + str(p) + " - 1"
         print(ps)
-        return q(n - 1) + 2 * n - 1
+        return q(n - 1, ps) + 2 * n - 1
 
 
 if __author__:
