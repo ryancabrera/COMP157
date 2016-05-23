@@ -12,7 +12,9 @@ __author__ = 'Ryan Cabrera'
 def main():
     word_1 = list("send")
     word_2 = list("more")
-    letters = set(word_1 + word_2)
+    word_3 = list("money")
+
+    letters = list(set(word_1 + word_2 + word_3))
     print(letters)
     rand_numbers = random.sample(range(1, 27), 26)
 #   print(len(rand_numbers), rand_numbers)
@@ -26,18 +28,18 @@ def main():
         for numbers_to_check in range(num_val):
             newval = 0
 
+    digits = range(8)
+    pv = itertools.permutations(digits, len(letters))
+    print(len(letters))
+    for perm in pv:
+        print(perm)
+    #print(solve_cabrera(letters))
     #print(solve2())
 
 
-def solve2():
-    letters = ('s', 'e', 'n', 'd', 'm', 'o', 'r', 'y')
+def solve_cabrera(letters):
     digits = range(10)
     pv = itertools.permutations(digits, len(letters))
-    print(pv)
-
-    for x in pv:
-        for y in x:
-            print(y)
 
     for perm in pv:
         sol = dict(zip(letters, perm))
