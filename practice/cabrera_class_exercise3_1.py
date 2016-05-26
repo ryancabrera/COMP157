@@ -1,6 +1,6 @@
 import random
 import time
-import copy
+# import copy
 
 __author__ = 'Ryan Cabrera'
 
@@ -45,26 +45,41 @@ class SortingExamples(object):
 
         return random_sample
 
+    @classmethod
+    def insertion_sort(cls, random_sample):
+        start_time = time.clock()
+        for i in range(1, len(random_sample)):
+            v = random_sample[i]
+            j = i - 1
 
-def main():
-    sort_examples = SortingExamples()
-    random_number_list = list()
+            while j >= 0 and random_sample[j] > v:
+                random_sample[j + 1] = random_sample[j]
+                j -= 1
 
-    random_number_list.append(sort_examples.random_sample_size_10)
-    random_number_list.append(sort_examples.random_sample_size_100)
-    random_number_list.append(sort_examples.random_sample_size_1000)
+            random_sample[j + 1] = v
+        end_time = time.clock()
+        print("\tInsertion Sort Time:", end_time - start_time)
+        return random_sample
 
-    for item in random_number_list:
-        print("Random List:\n\t", item)
-        print("Random List Size:", len(item))
-
-        bubble_list = copy.copy(item)
-        bubble_list = sort_examples.bubble_sort(bubble_list)
-        print("\t", bubble_list, "\n")
-
-        selection_list = copy.copy(item)
-        selection_list = sort_examples.selection_sort(selection_list)
-        print("\t", selection_list, "\n")
-
-if __author__:
-    main()
+# def main():
+#     sort_examples = SortingExamples()
+#     random_number_list = list()
+#
+#     random_number_list.append(sort_examples.random_sample_size_10)
+#     random_number_list.append(sort_examples.random_sample_size_100)
+#     random_number_list.append(sort_examples.random_sample_size_1000)
+#
+#     for item in random_number_list:
+#         print("Random List:\n\t", item)
+#         print("Random List Size:", len(item))
+#
+#         bubble_list = copy.copy(item)
+#         bubble_list = sort_examples.bubble_sort(bubble_list)
+#         print("\t", bubble_list, "\n")
+#
+#         selection_list = copy.copy(item)
+#         selection_list = sort_examples.selection_sort(selection_list)
+#         print("\t", selection_list, "\n")
+#
+# if __author__:
+#     main()
