@@ -61,6 +61,26 @@ class SortingExamples(object):
         print("\tInsertion Sort Time:", end_time - start_time)
         return random_sample
 
+    @classmethod
+    def mergesort(cls, random_sample):
+        n = len(random_sample)
+
+        if n > 1:
+            a = random_sample[:len(random_sample) // 2]
+            b = random_sample[len(random_sample) // 2]
+
+            cls.mergesort(a)
+            cls.mergesort(b)
+
+    @classmethod
+    def merge(cls, a, b, c):
+        i, j, k = 0
+        p = len(a)
+        q = len(b)
+
+
+
+
 # def main():
 #     sort_examples = SortingExamples()
 #     random_number_list = list()
