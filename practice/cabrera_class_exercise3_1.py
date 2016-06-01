@@ -63,23 +63,77 @@ class SortingExamples(object):
 
     @classmethod
     def mergesort(cls, random_sample):
+        print(random_sample)
         n = len(random_sample)
-
+        midway = n // 2
         if n > 1:
-            a = random_sample[:len(random_sample) // 2]
-            b = random_sample[len(random_sample) // 2]
+            b = random_sample[:midway]
+            c = random_sample[midway:]
 
-            cls.mergesort(a)
             cls.mergesort(b)
+            cls.mergesort(c)
+
+            cls.merge(b, c, random_sample)
+
+        print(random_sample)
+        return random_sample
 
     @classmethod
-    def merge(cls, a, b, c):
-        i, j, k = 0
-        p = len(a)
-        q = len(b)
+    def merge(cls, b, c, a):
 
+        i, j, k = 0, 0, 0
+        p, q = len(b), len(c)
+        alist, left_half, right_half = a, b, c
 
+        while i < p and j < q:
+            if left_half[i] <= right_half[j]:
+                alist[k] = right_half[i]
+                i += 1
 
+            else:
+                alist[k] = right_half[j]
+                j += 1
+
+            k += 1
+
+        while i < len(left_half):
+            alist[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            alist[k] = right_half[j]
+            j += 1
+            k += 1
+
+            # if i == p:
+            #     a[k:p+q-1] = c[j:q-1]
+            #
+            # else:
+            #     a[k:p+q-1] = b[i:p-1]
+
+    @classmethod
+    def shell_sort(cls, random_sample):
+        sub_count = len(random_sample) // 2
+
+        while sub_count > 0:
+            for start_position in range(sub_count):
+                cls.gap_insertion_sort(random_sample, start_position, sub_count)
+
+                sub_count /= 2
+
+    @classmethod
+    def gap_insertion_sort(cls, random_sample, start, gap):
+        for i in range(start + gap, len(random_sample), gap):
+
+            current_value = random_sample[i]
+            position = i
+
+            while position >= gap and random_sample[position - gap] > current_value:
+                random_sample[position] = random_sample[position - gap]
+                position = position - gap
+
+            return 0
 
 # def main():
 #     sort_examples = SortingExamples()

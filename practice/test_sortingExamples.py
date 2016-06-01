@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from practice.cabrera_class_exercise3_1 import SortingExamples
 
 __author__ = 'Ryan Cabrera'
@@ -19,3 +20,8 @@ class TestSortingExamples(TestCase):
         s = SortingExamples()
         insertion_list = s.random_sample_size_10
         self.assertListEqual(s.insertion_sort(insertion_list), sorted(insertion_list))
+
+    def test_merge_sort(self):
+        s = SortingExamples()
+        merge_list = s.random_sample_size_10
+        self.assertListEqual(s.mergesort(merge_list), sorted(merge_list))
