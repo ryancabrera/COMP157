@@ -113,27 +113,29 @@ class SortingExamples(object):
             #     a[k:p+q-1] = b[i:p-1]
 
     @classmethod
-    def shell_sort(cls, random_sample):
-        sub_count = len(random_sample) // 2
+    def shell_sort(cls, random_list):
+        sub_list = len(random_list) // 2
+        while sub_list > 0:
 
-        while sub_count > 0:
-            for start_position in range(sub_count):
-                cls.gap_insertion_sort(random_sample, start_position, sub_count)
+            for start_position in range(sub_list):
+                cls.gap_insertion_sort(random_list, start_position, sub_list)
 
-                sub_count /= 2
+            sub_list = int(sub_list) // 2
+
+        return random_list
 
     @classmethod
-    def gap_insertion_sort(cls, random_sample, start, gap):
-        for i in range(start + gap, len(random_sample), gap):
+    def gap_insertion_sort(cls, random_list, start_position, gap):
+        for i in range(start_position + gap, len(random_list), gap):
 
-            current_value = random_sample[i]
+            currentvalue = random_list[i]
             position = i
 
-            while position >= gap and random_sample[position - gap] > current_value:
-                random_sample[position] = random_sample[position - gap]
+            while position >= gap and random_list[position - gap] > currentvalue:
+                random_list[position] = random_list[position - gap]
                 position = position - gap
 
-            return 0
+            random_list[position] = currentvalue
 
 # def main():
 #     sort_examples = SortingExamples()

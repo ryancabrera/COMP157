@@ -21,7 +21,9 @@ class TestSortingExamples(TestCase):
         insertion_list = s.random_sample_size_10
         self.assertListEqual(s.insertion_sort(insertion_list), sorted(insertion_list))
 
-    def test_merge_sort(self):
+    def test_shell_sort(self):
+        stlist = "S H E L L S O R T I S U S E F U L L".split()
         s = SortingExamples()
-        merge_list = s.random_sample_size_10
-        self.assertListEqual(s.mergesort(merge_list), sorted(merge_list))
+        shell_list = s.random_sample_size_10
+        self.assertListEqual(s.shell_sort(stlist), sorted(stlist))
+        print(stlist)
